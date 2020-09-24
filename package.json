@@ -28,6 +28,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "crypto-js": "^4.0.0",
+    "elliptic": "^6.5.3",
+    "jquery": "^3.5.1"
   }
 }

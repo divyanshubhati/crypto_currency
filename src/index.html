@@ -24,7 +24,7 @@
             
             .sidenav {
               height: 100%;
-              width: 200px;
+              width: 250px;
               position: fixed;
               z-index: 1;
               top: 0;
@@ -49,6 +49,11 @@
             .main {
               margin-left: 200px; /* Same as the width of the sidenav */
             }
+
+            .main_container {
+                padding-left: 200px;
+            }
+
             
             @media screen and (max-height: 450px) {
               .sidenav {padding-top: 15px;}
@@ -60,65 +65,51 @@
         <header>
             
         </header>
-
-        <div class="container" id="main">
-            <div class="sidenav">
-                <a href="#" data-toggle="modal" data-target="#transactionModal">Add Transactions</a>
-                <a href="#">Mine Pending Transactions</a>
-                <a href="#">Temper chain data</a>
-                <a href="#">Check chain valiaidty</a>
-                <a href="#">Fix chain data</a>
-
-            </div> 
+        <div class="sidenav">
+            <a href="#" data-toggle="modal" data-target="#transactionModal">Add Transactions</a>
+            <a id="mine_block" href="#">Mine Pending Transactions</a>
+            <a href="#">Temper chain data</a>
+            <a id="check_chain_validity" href="#">Check chain valiaidty</a>
+            <a href="#">Fix chain data</a>
+        </div> 
+        <div class="container main_container" id="main">
             <section id="user-info" class="py-5">
                 <div class="container">
                     <h1 class="display-5 text-center mb-5"> User Account Details </h1>
                     <div class="row">
                         <div class="col-md-4 mb-4 text-center">
-                            <p>Bob Address : {{ bob_address }}</p>
-                            <p>Bob Balance : {{ bob_balance }}</p>
+                            <p>
+                                <span>Bob Address : </span>
+                                <span id="bob_address"></span>
+                            </p>
+                            <p>
+                                <span>Bob Balance : </span>
+                                <span id="bob_balance"></span>
+                            </p>
                         </div>
                         <div class="col-md-4 mb-4 text-center">
-                            <p>Alice Address : {{ alice_address }}</p>
-                            <p>Alice Balance : {{ alice_balance}}</p>
+                            <p>
+                                <span>Alice Address : </span>
+                                <span id="alice_address"></span>
+                            </p>
+                            <p>
+                                <span>Alice Balance : </span>
+                                <span id="alice_balance"></span>
+                            </p>
                         </div>
                         <div class="col-md-4 mb-4 text-center">
-                            <p>Miner Address : {{ alice_address }}</p>
-                            <p>Miner Balance : {{ alice_balance}}</p>
+                            <p>
+                                <span>Miner Address : </span>
+                                <span id="miner_address"></span>
+                            </p>
+                            <p>
+                                <span>Miner Balance : </span>
+                                <span id="miner_balance"></span>
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
-            
-            
-            <!-- <section id="options" class="py-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 mb-4 text-center">
-                           
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#transactionModal">
-                                Add Transactions
-                            </button>
-                            
-                        </div>
-                        <div class="col-md-4 mb-4 text-center">
-                            <a class="btn btn-primary" style="color: white;">Mine Pending Transactions</a>
-                            
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 mb-4 text-center">
-                            <a class="btn btn-primary" style="color: white;">Temper chain data</a>
-                        </div>
-                        <div class="col-md-4 mb-4 text-center">
-                            <a class="btn btn-primary" style="color: white;">Check chain valiaidty</a>
-                        </div>
-                        <div class="col-md-4 mb-4 text-center">
-                            <a class="btn btn-primary" style="color: white;">Fix chain data</a>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
 
             <section id="transactions-pool" class="py-5">
                 <div class="container">
@@ -128,21 +119,18 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Amount</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody id = "pending_transactions">
+                                <!-- <tr>
                                     <th scope="row">1</th>
                                     <td>Mark</td>
                                     <td>Otto</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                </tr>
+                                    <td>dummy</td>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -152,44 +140,18 @@
             <section id="block-data" class="py-5">
                 <div class="container">
                     <h1 class="display-5 text-center mb-5"> Block Data </h1>
-                    <div class="card-group">
-                        <div class="card">
-                          <div class="card-body">
-                            <h4 class="card-title">Card title</h4>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h4 class="card-title">Card title</h4>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                          </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <h4 class="card-title">Card title</h4>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                          </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                              <h4 class="card-title">Card title</h4>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                              <h4 class="card-title">Card title</h4>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                              <h4 class="card-title">Card title</h4>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            </div>
-                        </div>
-                      </div>
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
+                          <!-- <li class="list-group-item">
+                                <div class="col-3" style="display: inline-block;">
+                                    <h4 class="card-title">Genisis Block</h4>
+                                </div>
+                                <div style="display: inline-block;">
+                                    <p class="card-text">Hello BlockChain</p>
+                                </div>
+                          </li> -->
+                        </ul>
+                    </div>                      
                 </div>
             </section>
             
@@ -205,14 +167,14 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id= "transaction_info">
                         <div class="form-group row">
                             <label for="inputFrom" class="col-sm-4 col-form-label">FROM : </label>
                             <div class="col-sm-8">
                                 <select id="inputFrom" class="custom-select">
                                     <option selected>Open this select menu</option>
-                                    <option value="1">Bob</option>
-                                    <option value="2">Alice</option>
+                                    <option value="bob">Bob</option>
+                                    <option value="alice">Alice</option>
                                 </select>
                             </div>
                         </div>
@@ -221,8 +183,8 @@
                             <div class="col-sm-8">
                                 <select id="inputTo" class="custom-select">
                                     <option selected>Open this select menu</option>
-                                    <option value="1">Bob</option>
-                                    <option value="2">Alice</option>
+                                    <option value="bob">Bob</option>
+                                    <option value="alice">Alice</option>
                                 </select>
                             </div>
                         </div>
@@ -236,7 +198,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" id="send_money" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>

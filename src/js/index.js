@@ -2,9 +2,11 @@ import $ from 'jQuery';
 import User from './User';
 import Transaction from './Transaction';
 import Block from './Block';
+import _ from 'lodash';
 
 let alice, bob, miner;
 let pending_transactions = [];
+let mined_transaction = [];
 let blockChain = [];
 const difficultyLevel = 2;
 const miningReward = 20;
@@ -87,10 +89,10 @@ $("#send_money").on("click", function() {
 
   const transaction_row = `
   <tr class = "transaction_row">
-    <th scope="row">2</th>
+    <th scope="row">${mined_transaction.length + pending_transactions.length -1 }</th>
     <td>${transaction.fromAddress.substring(0,10)}</td>
     <td>${transaction.toAddress.substring(0,10)}</td>
-    <td>${transaction.amount}</td>
+    <td id="txAmount">${transaction.amount}</td>
   </tr>`
   $("#pending_transactions").append(transaction_row);
 
@@ -105,6 +107,9 @@ $("#mine_block").on("click", function(){
     alert("no trnasaction");
     return;
   }
+
+  mined_transaction = _.concat(mined_transaction,pending_transactions);
+  console.log(mined_transaction);
 
   // add miner reward
   const rewardTx = new Transaction(null, miner.publicKey, miningReward);
@@ -145,25 +150,44 @@ $("#mine_block").on("click", function(){
   pending_transactions = [];
   miner.balance += miningReward;
   $("#miner_balance").text(miner.balance);
-  $(".transaction_row").remove();
+  $(".transaction_row").addClass("table-success");
 
   $(".list-group").append(blockCard);
 });
 
-$("#check_chain_validity").on("click", function(){
+function checkChainValidity(){
 
   for(let i=1; i< blockChain.length; i++) {
     const currentBlock = blockChain[i];
 
     if(!currentBlock.hasValidTransactions()) {
-      console.log("false");
       return false ;
     }
     if(currentBlock.hash !== currentBlock.calculateHash()) {
-      console.log("false");
       return false;
     }
   }
-  console.log("true");
   return true
+}
+
+$("#temper_data").on("click", function(){
+  const transaction_id = $("#transaction_id").val();
+  const new_amount = $("#new_amount").val();
+
+  mined_transaction[transaction_id].amount = new_amount;
+  if (checkChainValidity()) {
+    $(".transaction_row").removeClass("table-danger");
+    $(".transaction_row").addClass("table-success");
+    $(".list-group-item").removeClass("bg-danger");
+  } else {
+    $(".transaction_row").removeClass("table-success");
+    $(".transaction_row").addClass("table-danger");
+    $(".list-group-item").addClass("bg-danger");
+  }
+
+});
+
+$("#reload").on("click", function(){
+  location.reload();
+  console.log("click");
 });

@@ -68,9 +68,8 @@
         <div class="sidenav">
             <a href="#" data-toggle="modal" data-target="#transactionModal">Add Transactions</a>
             <a id="mine_block" href="#">Mine Pending Transactions</a>
-            <a href="#">Temper chain data</a>
-            <a id="check_chain_validity" href="#">Check chain valiaidty</a>
-            <a href="#">Fix chain data</a>
+            <a href="#" data-toggle="modal" data-target="#temperModal">Temper chain data</a>
+            <a id="reload" href="#">Reset Data</a>
         </div> 
         <div class="container main_container" id="main">
             <section id="user-info" class="py-5">
@@ -113,7 +112,7 @@
 
             <section id="transactions-pool" class="py-5">
                 <div class="container">
-                    <h1 class="display-5 text-center mb-5"> Transaction Pool </h1>
+                    <h1 class="display-5 text-center mb-5">Transaction Pool </h1>
                     <div class="row">
                         <table class="table">
                             <thead>
@@ -203,5 +202,39 @@
               </div>
             </div>
         </div>
+
+        <div class="modal fade" id="temperModal" tabindex="-1" role="dialog" aria-labelledby="temperModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="temperModalLabel">Tranction Info</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form id= "transaction_info">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Select Transation Number to modify : </label>
+                            <div class="col-sm-8">
+                                <input id="transaction_id" class="form-control" type="text" placeholder="Enter only transaction in green">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">New amount : </label>
+                            <div class="col-sm-8">
+                                <input id="new_amount" class="form-control" type="text" placeholder="New amount to set">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" id="temper_data" class="btn btn-primary">Change Blockchain data</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
     </body>
 </html>

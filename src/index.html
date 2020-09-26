@@ -66,45 +66,55 @@
             
         </header>
         <div class="sidenav">
-            <a href="#" data-toggle="modal" data-target="#transactionModal">Add Transactions</a>
-            <a id="mine_block" href="#">Mine Pending Transactions</a>
-            <a href="#" data-toggle="modal" data-target="#temperModal">Temper chain data</a>
+            <a style="color: #f1f1f1; border-style: dashed; margin: 15px; margin-bottom: 50px;">CryptoStrap</a><br>
+            <a href="" data-toggle="modal" data-target="#transactionModal">Add Transactions</a><br>
+            <a id="mine_block" href="#">Mine Block</a><br>
+            <a href="" data-toggle="modal" style="padding-right: 5px;" data-target="#tamperModal">Tamper Chain Data</a><br>
             <a id="reload" href="#">Reset Data</a>
         </div> 
         <div class="container main_container" id="main">
             <section id="user-info" class="py-5">
                 <div class="container">
                     <h1 class="display-5 text-center mb-5"> User Account Details </h1>
-                    <div class="row">
-                        <div class="col-md-4 mb-4 text-center">
-                            <p>
-                                <span>Bob Address : </span>
-                                <span id="bob_address"></span>
-                            </p>
-                            <p>
-                                <span>Bob Balance : </span>
-                                <span id="bob_balance"></span>
-                            </p>
+                    <div class="card-deck">
+                        <div class="card">
+                            <img style="width: 40%; align-self: center; margin-top: 40px;" class="card-img-top" src="./alice.jpeg" alt="Card image cap">
+                            <div class="card-body">
+                                <p>
+                                    <span>Alice Address : </span>
+                                    <span id="alice_address"></span>
+                                </p>
+                                <p>
+                                    <span>Alice Balance : </span>
+                                    <span id="alice_balance"></span>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-md-4 mb-4 text-center">
-                            <p>
-                                <span>Alice Address : </span>
-                                <span id="alice_address"></span>
-                            </p>
-                            <p>
-                                <span>Alice Balance : </span>
-                                <span id="alice_balance"></span>
-                            </p>
+                        <div class="card">
+                            <img style="width: 50%; align-self: center; margin-top: 20px;" class="card-img-top" src="./bob.jpeg" alt="Card image cap">
+                            <div class="card-body">
+                                <p>
+                                    <span>Bob Address : </span>
+                                    <span id="bob_address"></span>
+                                </p>
+                                <p>
+                                    <span>Bob Balance : </span>
+                                    <span id="bob_balance"></span>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-md-4 mb-4 text-center">
-                            <p>
-                                <span>Miner Address : </span>
-                                <span id="miner_address"></span>
-                            </p>
-                            <p>
-                                <span>Miner Balance : </span>
-                                <span id="miner_balance"></span>
-                            </p>
+                        <div class="card">
+                            <img style="width: 55%; margin-top: 25px; align-self: center;" class="card-img-top" src="./miner2.jpg" alt="Card image cap">
+                            <div style="padding-top: 0px;" class="card-body">
+                                <p>
+                                    <span>Miner Address : </span>
+                                    <span id="miner_address"></span>
+                                </p>
+                                <p>
+                                    <span>Miner Balance : </span>
+                                    <span id="miner_balance"></span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,17 +207,17 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" id="send_money" class="btn btn-primary">Save changes</button>
+                  <button type="button" id="send_money" data-dismiss="modal" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>
         </div>
 
-        <div class="modal fade" id="temperModal" tabindex="-1" role="dialog" aria-labelledby="temperModalLabel" aria-hidden="true">
+        <div class="modal fade" id="tamperModal" tabindex="-1" role="dialog" aria-labelledby="tamperModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="temperModalLabel">Tranction Info</h5>
+                  <h5 class="modal-title" id="tamperModalLabel">Tranction Info</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -230,7 +240,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" id="temper_data" class="btn btn-primary">Change Blockchain data</button>
+                  <button type="button" id="tamper_data" data-dismiss="modal" class="btn btn-primary">Change Blockchain data</button>
                 </div>
               </div>
             </div>
